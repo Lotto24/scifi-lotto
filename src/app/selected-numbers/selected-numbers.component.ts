@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SelectedNumbersComponent implements OnInit {
 
-  public numbers = [{}, {}, {}, {}, {}, {}];
+  public numbers = [{number: 36}, {}, {}, {}, {}, {}];
 
   constructor() {
   }

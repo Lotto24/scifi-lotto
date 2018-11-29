@@ -12,3 +12,13 @@
   background-size: cover;
   margin-left: -30px;
 }
+
+.number--selected {
+  background-image: url("../../assets/number-filled.png");
+}
+
+.number span {
+  position: relative;
+  left: 30px;
+  top: 38px;
+}

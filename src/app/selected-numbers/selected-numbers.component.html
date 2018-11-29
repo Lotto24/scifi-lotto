@@ -1,3 +1,5 @@
 <div class="container">
-  <div *ngFor="let n of numbers" class="number"></div>
+  <div *ngFor="let n of numbers" [class]="'number number--' + (n.number ? 'selected' : 'empty')">
+    <span>{{n.number}}</span>
+  </div>
 </div>
