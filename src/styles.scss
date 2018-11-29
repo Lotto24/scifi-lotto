@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900');
+
+body {
+  background: url("assets/bg.png") #0b0225 top center;
+  background-size: cover;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  padding: 0;
+  margin: 0;
+}
