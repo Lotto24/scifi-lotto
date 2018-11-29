@@ -15,5 +15,5 @@ import {DialPosition} from './input/dial.directive';
 })
 export class AppComponent {
   public title = 'scifi-lotto';
-  public position: DialPosition;
+  public position: DialPosition = { deg: 0, percentage: 0 };;
 }

@@ -8,7 +8,7 @@ import {DialPosition} from '../input/dial.directive';
   styleUrls: ['./hud-ring.component.scss']
 })
 export class HudRingComponent implements OnInit {
-  @Input() public dialPosition: DialPosition;
+  @Input() public dialPosition: DialPosition = { deg: 0, percentage: 0 };
 
   constructor(private elRef: ElementRef) {
   }

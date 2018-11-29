@@ -13,6 +13,8 @@ export interface DialPosition {
 export class DialDirective implements OnInit {
   @Output() public appDial: EventEmitter<DialPosition> = new EventEmitter();
 
+  public dialPosition = 0;
+
   constructor(private elRef: ElementRef) {
     // noop
   }
