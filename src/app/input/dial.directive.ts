@@ -2,10 +2,17 @@ import {Directive, ElementRef, EventEmitter, OnInit, Output} from '@angular/core
 import {fromEvent, merge, Observable} from 'rxjs';
 import {concatMap, map, takeUntil, tap} from 'rxjs/operators';
 
+
+
 export interface DialPosition {
   deg: number;
   percentage: number;
 }
+
+const OPTS: AddEventListenerOptions = {
+  capture: false,
+  passive: true
+};
 
 @Directive({
   selector: '[appDial]'
@@ -61,13 +68,12 @@ export class DialDirective implements OnInit {
   private start$(): Observable<WebKitPoint> {
     return merge(this.mouseStart$(), this.touchStart$())
       .pipe(
-        tap(() => console.log('start')),
         map(this.toCenter.bind(this))
       );
   }
 
   private touchStart$(): Observable<WebKitPoint> {
-    return fromEvent(this.target, 'touchstart')
+    return fromEvent(this.target, 'touchstart', OPTS)
       .pipe(
         map((ev: TouchEvent) => ev.touches[0]),
         map((touch: Touch) => ({x: touch.pageX, y: touch.pageY}) as WebKitPoint)
@@ -75,7 +81,7 @@ export class DialDirective implements OnInit {
   }
 
   private mouseStart$(): Observable<WebKitPoint> {
-    return fromEvent(this.target, 'mousedown')
+    return fromEvent(this.target, 'mousedown', OPTS)
       .pipe(
         map((ev: MouseEvent) => ({x: ev.x, y: ev.y}) as WebKitPoint)
       );
@@ -87,7 +93,7 @@ export class DialDirective implements OnInit {
   }
 
   private mouseMove$(): Observable<WebKitPoint> {
-    return fromEvent(this.target, 'mousemove')
+    return fromEvent(this.target, 'mousemove', OPTS)
       .pipe(
         // tap(() => console.log('move')),
         map((ev: MouseEvent) => ({x: ev.x, y: ev.y}) as WebKitPoint)
@@ -95,7 +101,7 @@ export class DialDirective implements OnInit {
   }
 
   private touchMove$(): Observable<WebKitPoint> {
-    return fromEvent(this.target, 'touchmove')
+    return fromEvent(this.target, 'touchmove', OPTS)
       .pipe(
         map((ev: TouchEvent) => ev.touches[0]),
         map((touch: Touch) => ({x: touch.pageX, y: touch.pageY}) as WebKitPoint)
@@ -115,13 +121,13 @@ export class DialDirective implements OnInit {
   }
 
   private touchStop$(): Observable<any> {
-    return fromEvent(this.target, 'touchend');
+    return fromEvent(this.target, 'touchend', OPTS);
   }
 
   private mouseStop$(): Observable<any> {
     return merge(
-      fromEvent(this.target, 'mouseup'),
-      fromEvent(this.target, 'mouseleave')
+      fromEvent(this.target, 'mouseup', OPTS),
+      fromEvent(this.target, 'mouseleave', OPTS)
     );
   }
 }

@@ -1,13 +1,6 @@
 <div *ngFor="let ring of [1,2,3,4];" [class]="'ring-container ring-container--' + ring">
   <img [class]="'ring ring--' + ring" [src]="'../../assets/hud-ring-0' + ring + '.png'">
 </div>
-<div class="circle">
-  <ng-container *ngIf="dialPosition">
-    <span (click)="onNumberClicked()"
-          class="circle-number"
-          [textContent]="positionToValue(dialPosition)"></span>
-  </ng-container>
-</div>
 
 <div class="handle">
   <div *ngIf="dialPosition"
@@ -16,6 +9,17 @@
     <img src="../../assets/drag-handle.png" alt="">
   </div>
 </div>
+
 <div class="inner-ring-container">
   <img class="inner-ring" src="../../assets/hud-ring-05.png" alt="">
 </div>
+<div class="circle">
+  <ng-container *ngIf="dialPosition">
+    <span (click)="onNumberClicked()"
+          class="circle-number"
+          [textContent]="positionToValue(dialPosition)"></span>
+  </ng-container>
+</div>
+
+
+

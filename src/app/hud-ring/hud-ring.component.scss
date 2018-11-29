@@ -98,6 +98,7 @@
 }
 
 .circle-number {
+  user-select: none;
   pointer-events: auto;
   font-size: 4em;
   padding-top: 11px;
@@ -117,6 +118,7 @@
 
   .bar,
   IMG {
+    pointer-events: none;
     user-select: none;
     width: 100%;
     height: 100%;
