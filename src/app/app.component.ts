@@ -8,6 +8,7 @@ import {DialPosition} from './input/dial.directive';
       <app-hud-ring (appDial)="position = $event"
                     [dialPosition]="position">
       </app-hud-ring>
+      <app-selected-numbers></app-selected-numbers>
     </div>
   `,
   styleUrls: ['./app.component.scss']

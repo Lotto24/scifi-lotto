@@ -17,13 +17,15 @@ export class HudRingComponent implements OnInit {
     fromEvent(window, 'deviceorientation')
       .subscribe((event: DeviceOrientationEvent) => {
 
-        const beta = event.beta;
+        const maxYOffset = 30;
+        const beta = easeOutQuad((event.beta - 45) / 180) * maxYOffset;
         const offsetY1 = beta * 4;
         const offsetY2 = beta * 3;
         const offsetY3 = beta * 2;
         const offsetY4 = beta;
 
-        const gamma = event.gamma * 0.5;
+        const maxXOffset = 15;
+        const gamma = easeOutQuad(event.gamma / 180) * maxXOffset;
         const offsetX1 = gamma * 4;
         const offsetX2 = gamma * 3;
         const offsetX3 = gamma * 2;
@@ -49,4 +51,8 @@ export class HudRingComponent implements OnInit {
   private toValues(percentage: number, min: number, max: number): number {
     return Math.round(percentage * (max - min) + min);
   }
+}
+
+function easeOutQuad(t) {
+  return t * (2 - t);
 }

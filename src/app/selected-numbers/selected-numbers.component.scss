@@ -1,0 +1,14 @@
+
+.container {
+  display: flex;
+  justify-items: center;
+  margin-left: 30px;
+}
+
+.number {
+  width: 88px;
+  height: 88px;
+  background-image: url("../../assets/number-unfilled.png");
+  background-size: cover;
+  margin-left: -30px;
+}

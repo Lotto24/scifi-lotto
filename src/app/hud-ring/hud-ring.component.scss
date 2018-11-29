@@ -49,23 +49,19 @@
 }
 
 .ring-container--1 {
-  transform: translateY(var(--ring-1-y-offset));
-  transform: translateX(var(--ring-1-x-offset));
+  transform: translateY(var(--ring-1-y-offset)) translateX(var(--ring-1-x-offset));
 }
 
 .ring-container--2 {
-  transform: translateY(var(--ring-2-y-offset));
-  transform: translateX(var(--ring-2-x-offset));
+  transform: translateY(var(--ring-2-y-offset)) translateX(var(--ring-2-x-offset));
 }
 
 .ring-container--3 {
-  transform: translateY(var(--ring-3-y-offset));
-  transform: translateX(var(--ring-3-x-offset));
+  transform: translateY(var(--ring-3-y-offset)) translateX(var(--ring-3-x-offset));
 }
 
 .ring-container--4 {
-  transform: translateY(var(--ring-4-y-offset));
-  transform: translateX(var(--ring-4-x-offset));
+  transform: translateY(var(--ring-4-y-offset)) translateX(var(--ring-4-x-offset));
 }
 
 .ring {
@@ -92,7 +88,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3em;
 
   width: 180px;
   height: 180px;
@@ -100,6 +95,14 @@
   border-radius: 50%;
   border: 1px solid rgba(140, 80, 179, 0.5);
   box-sizing: border-box;
+}
+
+.circle-number {
+  font-size: 4em;
+  padding-top: 11px;
+  background: -webkit-linear-gradient(#18ffff, #0091ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .handle {
