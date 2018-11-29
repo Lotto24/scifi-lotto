@@ -63,14 +63,14 @@ export class DialDirective implements OnInit {
     return fromEvent(this.target, 'touchstart')
       .pipe(
         map((ev: TouchEvent) => ev.touches[0]),
-        map((touch: Touch) => ({x: touch.pageX, y: touch.pageY}) as WebKitPoint);
-      )
+        map((touch: Touch) => ({x: touch.pageX, y: touch.pageY}) as WebKitPoint)
+      );
   }
 
   private mouseStart$(): Observable<WebKitPoint> {
     return fromEvent(this.target, 'mousedown')
       .pipe(
-        map((ev: MouseEvent) => ({x: ev.x, y: ev.y}) as WebKitPoint )
+        map((ev: MouseEvent) => ({x: ev.x, y: ev.y}) as WebKitPoint)
       );
   }
 
@@ -83,7 +83,7 @@ export class DialDirective implements OnInit {
     return fromEvent(this.target, 'mousemove')
       .pipe(
         // tap(() => console.log('move')),
-        map((ev: MouseEvent) => ({x: ev.x, y: ev.y}) as WebKitPoint )
+        map((ev: MouseEvent) => ({x: ev.x, y: ev.y}) as WebKitPoint)
       );
   }
 
@@ -91,8 +91,8 @@ export class DialDirective implements OnInit {
     return fromEvent(this.target, 'touchmove')
       .pipe(
         map((ev: TouchEvent) => ev.touches[0]),
-        map((touch: Touch) => ({x: touch.pageX, y: touch.pageY}) as WebKitPoint);
-      )
+        map((touch: Touch) => ({x: touch.pageX, y: touch.pageY}) as WebKitPoint)
+      );
   }
 
   private toCenter(point: WebKitPoint): WebKitPoint {
@@ -107,14 +107,14 @@ export class DialDirective implements OnInit {
       .pipe(map(() => null));
   }
 
-  private touchStop$(): Observable<any>{
+  private touchStop$(): Observable<any> {
     return fromEvent(this.target, 'touchend');
   }
 
   private mouseStop$(): Observable<any> {
     return merge(
-        fromEvent(this.target, 'mouseup'),
-        fromEvent(this.target, 'mouseleave')
-      );
+      fromEvent(this.target, 'mouseup'),
+      fromEvent(this.target, 'mouseleave')
+    );
   }
 }
