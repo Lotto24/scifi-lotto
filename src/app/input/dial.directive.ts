@@ -1,12 +1,17 @@
 import {Directive, ElementRef, EventEmitter, OnInit, Output} from '@angular/core';
 import {fromEvent, merge, Observable} from 'rxjs';
-import {concatMap, distinctUntilChanged, map, takeUntil, tap} from 'rxjs/operators';
+import {concatMap, map, takeUntil, tap} from 'rxjs/operators';
+
+export interface DialPosition {
+  deg: number;
+  percentage: number;
+}
 
 @Directive({
   selector: '[appDial]'
 })
 export class DialDirective implements OnInit {
-  @Output() public appDial: EventEmitter<number> = new EventEmitter();
+  @Output() public appDial: EventEmitter<DialPosition> = new EventEmitter();
 
   constructor(private elRef: ElementRef) {
     // noop
@@ -15,11 +20,15 @@ export class DialDirective implements OnInit {
   public ngOnInit(): void {
     this.offset$()
       .pipe(
-        map((deg) => (deg / 360)), // percentage
-        map((value) => this.toValues(value, 1, 49)),
-        distinctUntilChanged()
+        map((deg) => {
+          const percentage = deg / 360;
+          return {
+            deg,
+            percentage
+          } as DialPosition;
+        })
       )
-      .subscribe((value: number) => this.appDial.next(value));
+      .subscribe((pos: DialPosition) => this.appDial.next(pos));
   }
 
   private get target(): HTMLElement {
@@ -37,10 +46,6 @@ export class DialDirective implements OnInit {
             );
         })
       );
-  }
-
-  private toValues(percentage: number, min: number, max: number): number {
-    return Math.round(percentage * (max - min) + min);
   }
 
   private toAngle(x: number, y: number): number {

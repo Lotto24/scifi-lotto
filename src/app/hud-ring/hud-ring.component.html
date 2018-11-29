@@ -2,7 +2,12 @@
   <img [class]="'ring ring--' + ring" [src]="'../../assets/hud-ring-0' + ring + '.png'">
 </div>
 <div class="circle">
-  <ng-content></ng-content>
+  <ng-container *ngIf="dialPosition">
+    <span [textContent]="positionToValue(dialPosition)"></span>
+  </ng-container>
+</div>
+<div *ngIf="dialPosition" class="handle">
+  <img src="../../assets/drag-handle.png" alt="">
 </div>
 <div class="inner-ring-container">
   <img class="inner-ring" src="../../assets/hud-ring-05.png" alt="">

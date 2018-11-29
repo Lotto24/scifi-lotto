@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {DialPosition} from './input/dial.directive';
 
 @Component({
   selector: 'app-root',
   template: `
     <div class="page">
-      <app-hud-ring (appDial)="value = $event">
-        <span *ngIf="value" [textContent]="value"></span>
+      <app-hud-ring (appDial)="position = $event"
+                    [dialPosition]="position">
       </app-hud-ring>
     </div>
   `,
@@ -13,5 +14,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public title = 'scifi-lotto';
-  public value: number;
+  public position: DialPosition;
 }

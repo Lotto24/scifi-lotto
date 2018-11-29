@@ -1,5 +1,6 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {fromEvent} from 'rxjs';
+import {DialPosition} from '../input/dial.directive';
 
 @Component({
   selector: 'app-hud-ring',
@@ -7,6 +8,7 @@ import {fromEvent} from 'rxjs';
   styleUrls: ['./hud-ring.component.scss']
 })
 export class HudRingComponent implements OnInit {
+  @Input() public dialPosition: DialPosition;
 
   constructor(private elRef: ElementRef) {
   }
@@ -40,4 +42,11 @@ export class HudRingComponent implements OnInit {
       });
   }
 
+  public positionToValue(pos: DialPosition): number {
+    return this.toValues(pos.percentage, 1, 49);
+  }
+
+  private toValues(percentage: number, min: number, max: number): number {
+    return Math.round(percentage * (max - min) + min);
+  }
 }
