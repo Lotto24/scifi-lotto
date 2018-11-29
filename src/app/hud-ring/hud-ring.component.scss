@@ -31,6 +31,14 @@
 }
 
 .ring-container {
+
+}
+
+.ring {
+  user-select: none;
+  pointer-events: none;
+  width: 100%;
+  height: auto;
   position: absolute;
   top: 0;
   left: 0;
@@ -41,16 +49,24 @@
 }
 
 .circle {
+  user-select: none;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+
   width: 180px;
   height: 180px;
   background-color: rgba(0, 0, 0, 0.25);
   border-radius: 50%;
   border: 1px solid rgba(140, 80, 179, 0.5);
   box-sizing: border-box;
+
 }
 
 .ring--1 {

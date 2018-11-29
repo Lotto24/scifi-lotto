@@ -16,11 +16,10 @@ export class DialDirective implements OnInit {
     this.offset$()
       .pipe(
         map((deg) => (deg / 360)), // percentage
-        map((value) => this.toValues(value, 0, 9)),
-        distinctUntilChanged(),
-        tap(console.log(value => console.log(value)))
+        map((value) => this.toValues(value, 1, 49)),
+        distinctUntilChanged()
       )
-      .subscribe((value) => this.appDial.next(value));
+      .subscribe((value: number) => this.appDial.next(value));
   }
 
   private get target(): HTMLElement {
@@ -53,10 +52,12 @@ export class DialDirective implements OnInit {
   }
 
   private start$(): Observable<WebKitPoint> {
-    return fromEvent(this.target, 'mousedown')
+    return merge(
+        fromEvent(this.target, 'mousedown')
+      )
       .pipe(
-        tap(() => console.log('start')),
         map((ev: MouseEvent) => ({x: ev.x, y: ev.y}) as WebKitPoint ),
+        tap(() => console.log('start')),
         map(this.toCenter.bind(this))
       );
   }
