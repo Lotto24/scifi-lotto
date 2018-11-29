@@ -6,9 +6,9 @@ import {Component} from '@angular/core';
     './jog-dial.component.scss'
   ],
   template: `
-    <div (appDial)="value = $event">
-      <span *ngIf="value">
-        {{ value.angle }}
+    <div (appDial)="value = $event" class="wrapper">
+      <span *ngIf="value" class="value">
+        {{ value }}
       </span>
     </div>
   `
