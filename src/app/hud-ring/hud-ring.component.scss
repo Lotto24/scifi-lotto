@@ -6,7 +6,13 @@
   text-align: center;
   position: relative;
   --speed: 100s;
-  --ring-y-offset: 0px;
+  --ring-1-y-offset: 0px;
+}
+
+.inner-ring {
+  width: 100%;
+  transform: rotate(0);
+  animation: rotating-inner var(--speed) infinite;
 }
 
 .inner-ring-container {
@@ -18,23 +24,20 @@
   transform: translate(-50%, -50%);
 }
 
-.inner-ring {
-  width: 100%;
-  transform: rotate(0);
-  animation: rotating-inner var(--speed) infinite;
-}
-
-.ring-container {
-
-}
-
 .ring {
   width: 100%;
   height: auto;
+  transform: rotate(0) scale(1.85);
+}
+
+.ring-container {
   position: absolute;
   top: 0;
   left: 0;
-  transform: rotate(0) scale(1.85) translateY(var(--ring-y-offset));
+}
+
+.ring-container--1 {
+  transform: translateY(var(--ring-1-y-offset));
 }
 
 .circle {
