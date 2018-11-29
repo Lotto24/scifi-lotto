@@ -3,7 +3,9 @@
 </div>
 <div class="circle">
   <ng-container *ngIf="dialPosition">
-    <span class="circle-number" [textContent]="positionToValue(dialPosition)"></span>
+    <span (click)="onNumberClicked()"
+          class="circle-number"
+          [textContent]="positionToValue(dialPosition)"></span>
   </ng-container>
 </div>
 

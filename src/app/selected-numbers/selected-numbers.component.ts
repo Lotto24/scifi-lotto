@@ -15,4 +15,7 @@ export class SelectedNumbersComponent implements OnInit {
   ngOnInit() {
   }
 
+  public selectNumber(n: number) {
+    console.log(n);
+  }
 }

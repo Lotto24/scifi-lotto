@@ -98,6 +98,7 @@
 }
 
 .circle-number {
+  pointer-events: auto;
   font-size: 4em;
   padding-top: 11px;
   background: -webkit-linear-gradient(#18ffff, #0091ea);

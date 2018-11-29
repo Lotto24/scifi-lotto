@@ -45,6 +45,11 @@ export class HudRingComponent implements OnInit {
       });
   }
 
+  public onNumberClicked(): void {
+    console.log('foo')
+    this.numberSelected.emit(this.positionToValue(this.dialPosition));
+  }
+
   public positionToValue(pos: DialPosition): number {
     return this.toValues(pos.percentage, 1, 49);
   }
