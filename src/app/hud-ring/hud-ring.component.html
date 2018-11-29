@@ -1,14 +1,5 @@
-<div class="ring-container">
-  <img class="ring ring--1" src="../../assets/hud-ring-01.png" alt="">
-</div>
-<div class="ring-container">
-  <img class="ring ring--2" src="../../assets/hud-ring-02.png" alt="">
-</div>
-<div class="ring-container">
-  <img class="ring ring--3" src="../../assets/hud-ring-03.png" alt="">
-</div>
-<div class="ring-container">
-  <img class="ring ring--4" src="../../assets/hud-ring-04.png" alt="">
+<div *ngFor="let ring of [1,2,3,4];" [class]="'ring-container ring-container--' + ring">
+  <img [class]="'ring ring--' + ring" [src]="'../../assets/hud-ring-0' + ring + '.png'">
 </div>
 <div class="circle">
   <ng-content></ng-content>
