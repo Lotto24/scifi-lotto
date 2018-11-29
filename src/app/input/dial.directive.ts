@@ -52,23 +52,47 @@ export class DialDirective implements OnInit {
   }
 
   private start$(): Observable<WebKitPoint> {
-    return merge(
-        fromEvent(this.target, 'mousedown')
-      )
+    return merge(this.mouseStart$(), this.touchStart$())
       .pipe(
-        map((ev: MouseEvent) => ({x: ev.x, y: ev.y}) as WebKitPoint ),
         tap(() => console.log('start')),
         map(this.toCenter.bind(this))
       );
   }
 
+  private touchStart$(): Observable<WebKitPoint> {
+    return fromEvent(this.target, 'touchstart')
+      .pipe(
+        map((ev: TouchEvent) => ev.touches[0]),
+        map((touch: Touch) => ({x: touch.pageX, y: touch.pageY}) as WebKitPoint);
+      )
+  }
+
+  private mouseStart$(): Observable<WebKitPoint> {
+    return fromEvent(this.target, 'mousedown')
+      .pipe(
+        map((ev: MouseEvent) => ({x: ev.x, y: ev.y}) as WebKitPoint )
+      );
+  }
+
   private move$(): Observable<WebKitPoint> {
+    return merge(this.mouseMove$(), this.touchMove$())
+      .pipe(map(this.toCenter.bind(this)));
+  }
+
+  private mouseMove$(): Observable<WebKitPoint> {
     return fromEvent(this.target, 'mousemove')
       .pipe(
         // tap(() => console.log('move')),
-        map((ev: MouseEvent) => ({x: ev.x, y: ev.y}) as WebKitPoint ),
-        map(this.toCenter.bind(this))
+        map((ev: MouseEvent) => ({x: ev.x, y: ev.y}) as WebKitPoint )
       );
+  }
+
+  private touchMove$(): Observable<WebKitPoint> {
+    return fromEvent(this.target, 'touchmove')
+      .pipe(
+        map((ev: TouchEvent) => ev.touches[0]),
+        map((touch: Touch) => ({x: touch.pageX, y: touch.pageY}) as WebKitPoint);
+      )
   }
 
   private toCenter(point: WebKitPoint): WebKitPoint {
@@ -79,13 +103,18 @@ export class DialDirective implements OnInit {
   }
 
   private stop$(): Observable<void> {
+    return merge(this.mouseStop$(), this.touchStop$())
+      .pipe(map(() => null));
+  }
+
+  private touchStop$(): Observable<any>{
+    return fromEvent(this.target, 'touchend');
+  }
+
+  private mouseStop$(): Observable<any> {
     return merge(
         fromEvent(this.target, 'mouseup'),
         fromEvent(this.target, 'mouseleave')
-      )
-      .pipe(
-        tap(() => console.log('stop')),
-        map(() => null)
       );
   }
 }
