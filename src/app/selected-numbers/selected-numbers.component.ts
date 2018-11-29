@@ -17,7 +17,9 @@ export class SelectedNumbersComponent {
     const emptySlots = this.numbers
       .filter((slot) => !slot.hasOwnProperty('number'));
 
-    if (emptySlots.length > 0) {
+    const hasNumber = !!this.numbers.find((slot) => slot.number === n);
+
+    if (!hasNumber && emptySlots.length > 0) {
       emptySlots.shift().number = n;
     }
 
