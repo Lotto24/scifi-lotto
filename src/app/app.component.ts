@@ -4,6 +4,7 @@ import {DialPosition} from './input/dial.directive';
 @Component({
   selector: 'app-root',
   template: `
+    <img class="logo" src="../assets/logo.png" alt="Lazer Unicorn Lotto">
     <div class="page">
       <app-hud-ring (appDial)="position = $event"
                     [dialPosition]="position">
@@ -15,5 +16,5 @@ import {DialPosition} from './input/dial.directive';
 })
 export class AppComponent {
   public title = 'scifi-lotto';
-  public position: DialPosition = { deg: 0, percentage: 0 };;
+  public position: DialPosition = {deg: 0, percentage: 0};
 }

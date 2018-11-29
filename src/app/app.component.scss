@@ -1,7 +1,15 @@
 
 .page {
-  padding: 45px 0 90px 0;
+  padding: 66px 0 90px 0;
   overflow: hidden;
+}
+
+.logo {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 100%;
+  z-index: 1;
 }
 
 

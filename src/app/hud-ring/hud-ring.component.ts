@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {fromEvent} from 'rxjs';
 import {DialPosition} from '../input/dial.directive';
 
@@ -8,7 +8,8 @@ import {DialPosition} from '../input/dial.directive';
   styleUrls: ['./hud-ring.component.scss']
 })
 export class HudRingComponent implements OnInit {
-  @Input() public dialPosition: DialPosition = { deg: 0, percentage: 0 };
+  @Input() public dialPosition: DialPosition = {deg: 0, percentage: 0};
+  @Output() public numberSelected = new EventEmitter();
 
   constructor(private elRef: ElementRef) {
   }
