@@ -6,8 +6,13 @@
     <span [textContent]="positionToValue(dialPosition)"></span>
   </ng-container>
 </div>
-<div *ngIf="dialPosition" class="handle">
-  <img src="../../assets/drag-handle.png" alt="">
+
+<div class="handle">
+  <div *ngIf="dialPosition"
+       [style.transform]="'rotate(' +dialPosition.deg + 'deg)'"
+       class="bar">
+    <img src="../../assets/drag-handle.png" alt="">
+  </div>
 </div>
 <div class="inner-ring-container">
   <img class="inner-ring" src="../../assets/hud-ring-05.png" alt="">
