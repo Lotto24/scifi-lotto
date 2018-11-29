@@ -14,12 +14,15 @@ export class SelectedNumbersComponent {
   public numbers: NumberSlot[] = [{}, {}, {}, {}, {}, {}];
 
   public selectNumber(n: number) {
-    console.log(n);
     const emptySlots = this.numbers
       .filter((slot) => !slot.hasOwnProperty('number'));
 
     if (emptySlots.length > 0) {
       emptySlots.shift().number = n;
     }
+
+    console.log(this.numbers
+      .map(slot => slot.number || 'X')
+      .join('-'));
   }
 }

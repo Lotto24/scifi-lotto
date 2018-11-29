@@ -46,7 +46,6 @@ export class HudRingComponent implements OnInit {
   }
 
   public onNumberClicked(): void {
-    console.log('foo')
     this.numberSelected.emit(this.positionToValue(this.dialPosition));
   }
 
