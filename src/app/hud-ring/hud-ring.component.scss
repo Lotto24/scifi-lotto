@@ -1,0 +1,112 @@
+
+:host {
+  display: block;
+  width: 100%;
+  padding-top: 100%;
+  text-align: center;
+  position: relative;
+  --speed: 100s;
+  --ring-y-offset: 0px;
+}
+
+.inner-ring-container {
+  width: 180px;
+  height: 180px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.inner-ring {
+  width: 100%;
+  transform: rotate(0);
+  animation: rotating-inner var(--speed) infinite;
+}
+
+.ring-container {
+
+}
+
+.ring {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(0) scale(1.85) translateY(var(--ring-y-offset));
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  border: 1px solid rgba(140, 80, 179, 0.5);
+  box-sizing: border-box;
+}
+
+.ring--1 {
+  animation: rotating-1 calc(2 * var(--speed)) infinite;
+}
+
+.ring--2 {
+  animation: rotating-2 calc(1.8 * var(--speed)) infinite;
+}
+
+.ring--3 {
+  animation: rotating-3 calc(3.8 * var(--speed)) infinite;
+}
+
+.ring--4 {
+  animation: rotating-4 calc(1.2 * var(--speed)) infinite;
+}
+
+@keyframes rotating-1 {
+  0% {
+    transform: rotate(360deg) scale(1.85);
+  }
+  100% {
+    transform: rotate(0deg) scale(1.85);
+  }
+}
+
+@keyframes rotating-2 {
+  0% {
+    transform: rotate(0) scale(1.85);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.85);
+  }
+}
+
+@keyframes rotating-3 {
+  0% {
+    transform: rotate(0) scale(1.85);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.85);
+  }
+}
+
+@keyframes rotating-4 {
+  0% {
+    transform: rotate(0) scale(1.85);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.85);
+  }
+}
+
+@keyframes rotating-inner {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
